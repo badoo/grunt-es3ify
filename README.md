@@ -43,6 +43,6 @@ grunt.initConfig({
 
 ### Options
 
-{{options.readOnly}} (Boolean, default: false)
+`options.readOnly` (Boolean, default: false)
 Shows in the console what will be transformed and where is the destination without any write operations.
 
