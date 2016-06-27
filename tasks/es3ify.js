@@ -21,17 +21,38 @@
 
 "use strict";
 
+var path = require("path");
+var chalk = require("chalk");
 var transform = require("es3ify").transform;
 
 module.exports = function(grunt) {
 
   grunt.registerMultiTask("es3ify", "Transforms ES5 to ES3", function() {
 
+    var options = this.options({
+      readOnly: false
+    });
+
     this.files.forEach(function(filePair) {
-      
+
       filePair.src.forEach(function(src) {
-        var content = grunt.file.read(src);
-        grunt.file.write(filePair.dest, transform(content));
+
+        var dest = filePair.dest;
+        if (!dest) {
+          dest = src;
+        }
+        else if (grunt.util._.endsWith(dest, "/")) {
+          dest = path.join(dest, src);
+        }
+
+        if (options.readOnly) {
+          grunt.log.writeln("Will transform " + chalk.cyan(src) + " -> " + chalk.cyan(dest));
+        }
+        else {
+          grunt.verbose.writeln("Transforming " + chalk.cyan(src) + " -> " + chalk.cyan(dest));
+          var content = grunt.file.read(src);
+          grunt.file.write(dest, transform(content));
+        }
       });
     });
   });

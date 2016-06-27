@@ -17,8 +17,6 @@
 
 "use strict";
 
-var path = require("path");
-
 module.exports = function(grunt) {
 
   // load local tasks
@@ -41,6 +39,14 @@ module.exports = function(grunt) {
       build: {
         src: "test/source.js",
         dest: "test/result.js"
+      },
+
+      // set "readOnly" flag for testing
+      test: {
+        options: {
+          readOnly: true
+        },
+        src: "test/src/*.js"
       }
     }
   });
@@ -49,5 +55,5 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks("grunt-contrib-nodeunit");
 
   // default task will be used for 'frontend sync'
-  grunt.registerTask("default", ["clean", "es3ify", "nodeunit"]);
+  grunt.registerTask("default", ["clean", "es3ify:build", "nodeunit"]);
 };

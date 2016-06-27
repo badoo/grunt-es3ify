@@ -29,6 +29,10 @@ grunt.initConfig({
     },
 
     fooBar: {
+      // use "readOnly" flag for testing your configuration
+      options: {
+        readOnly: true
+      },
       cwd: "js/app/",
       src: "**/*.js",
       dest: "target"
@@ -37,4 +41,8 @@ grunt.initConfig({
 });
 ```
 
+### Options
+
+{{options.readOnly}} (Boolean, default: false)
+Shows in the console what will be transformed and where is the destination without any write operations.
 
