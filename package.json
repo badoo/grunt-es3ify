@@ -1,6 +1,6 @@
 {
   "name": "grunt-es3ify",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Transforms ES5 JavaScript files to ES3 by using es3ify.",
   "author": {
     "name": "pro!vision GmbH",

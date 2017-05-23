@@ -23,7 +23,7 @@
 
 var path = require("path");
 var chalk = require("chalk");
-var transform = require("es3ify").transform;
+var transform = require("../es3ify").transform;
 
 module.exports = function(grunt) {
 
